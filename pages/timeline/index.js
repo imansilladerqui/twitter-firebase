@@ -1,4 +1,4 @@
-import styles from "../../styles/Timeline.module.scss";
+import styles from "Timeline.module.scss";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";

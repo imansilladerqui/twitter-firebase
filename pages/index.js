@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.scss";
-import Button from "../components/Button";
-import GitHub from "../components/Icons/GitHub";
+import styles from "index.module.scss";
+import Button from "components/Button";
+import GitHub from "components/Icons/GitHub";
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
+import Avatar from "components/Avatar";
+import Logo from "components/Icons/Logo";
 
 export default function Home() {
   const [user, setUser] = useState(undefined);
@@ -14,7 +15,7 @@ export default function Home() {
   }, []);
 
   const handleClick = () => {
-    loginWithGitHub().then(setUser);
+    loginWithGitHub(setUser);
   };
 
   return (
@@ -25,36 +26,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <section>
-          <Image
-            src="/devter-logo.png"
-            alt="Devter Logo"
-            width={100}
-            height={100}
-          />
+          <Logo width="100" />
           <h1 className={styles.title}>Twitter MVP</h1>
           <h2 className={styles.title}>
             The new Twitter <br /> made by Next.js
           </h2>
           <div>
             {user === null && (
-              <Button onClick={() => handleClick()}>
+              <Button onClick={handleClick}>
                 <GitHub fill={"#fff"} width={24} height={24} />
                 Login with GitHub
               </Button>
             )}
 
             {user && user.avatar && (
-              <div>
-                <Image
-                  src={user.avatar}
-                  alt="Avatar"
-                  width={100}
-                  height={100}
-                />
-                <strong>{user.username}</strong>
-              </div>
+              <Avatar
+                name={user.username}
+                src={user.avatar}
+                alt={"avatar"}
+                withText
+              />
             )}
           </div>
 

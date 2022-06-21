@@ -8,7 +8,7 @@
   text-align: center;
   font-size: 48px;
 
-  .main {
+  main {
     background: $white;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -28,13 +28,13 @@
 
       h1 {
         font-size: 36px;
-        color: $secondary;
+        color: $primary;
         margin: 0;
       }
 
       h2 {
         font-size: 24px;
-        color: $primary;
+        color: $secondary;
         margin-bottom: 16px;
       }
     }

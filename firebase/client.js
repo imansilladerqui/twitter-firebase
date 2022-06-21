@@ -28,12 +28,15 @@ export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const onAuthStateChanged = (onChange) => {
   return firebase.auth().onAuthStateChanged((user) => {
-    const normalizedUser = mapUserFromFirebaseAuth(user);
+    const normalizedUser = user ? mapUserFromFirebaseAuth(user) : null;
     onChange(normalizedUser);
   });
 };
 
-export const loginWithGitHub = () => {
+export const loginWithGitHub = (setUser) => {
   const gitHubProvider = new firebase.auth.GithubAuthProvider();
-  return firebase.auth().signInWithPopup(gitHubProvider);
+  return firebase
+    .auth()
+    .signInWithPopup(gitHubProvider)
+    .then(onAuthStateChanged(setUser));
 };
