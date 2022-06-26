@@ -49,16 +49,5 @@
     .section {
       min-height: 100vh;
     }
-
-    nav {
-      background: $white;
-      bottom: 0;
-      border-top: 1px solid #eee;
-      height: 49px;
-      position: -webkit-sticky; /* Safari */
-      position: sticky;
-      width: 100%;
-      z-index: 9999;
-    }
   }
 }
