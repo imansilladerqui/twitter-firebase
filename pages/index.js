@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import styles from "index.module.scss";
+import styles from "./index.module.scss";
 import Button from "components/Button";
 import GitHub from "components/Icons/GitHub";
-import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
-import Avatar from "components/Avatar";
+import { loginWithGitHub, onAuthStateChangedAPI } from "../firebase/client";
 import Logo from "components/Icons/Logo";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [user, setUser] = useState(undefined);
+  const router = useRouter();
 
   useEffect(() => {
-    onAuthStateChanged(setUser);
+    onAuthStateChangedAPI(setUser);
   }, []);
 
+  useEffect(() => {
+    user && router.replace("/home");
+  }, [user]);
+
   const handleClick = () => {
-    loginWithGitHub(setUser);
+    loginWithGitHub(setUser).catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
@@ -41,19 +48,8 @@ export default function Home() {
               </Button>
             )}
 
-            {user && user.avatar && (
-              <Avatar
-                name={user.username}
-                src={user.avatar}
-                alt={"avatar"}
-                withText
-              />
-            )}
+            {user === undefined && <img src="/spinner.gif" />}
           </div>
-
-          {/* <nav className={styles.navbar}>
-            <Link href="/timeline">Timeline</Link>
-          </nav> */}
         </section>
       </main>
     </div>

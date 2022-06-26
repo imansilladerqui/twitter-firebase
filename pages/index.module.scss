@@ -8,6 +8,11 @@
   text-align: center;
   font-size: 48px;
 
+  @media (min-width: $breakpoints-mobile) {
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
   main {
     background: $white;
     border-radius: 10px;
@@ -17,7 +22,7 @@
 
     @media (min-width: $breakpoints-mobile) {
       max-width: $breakpoints-mobile;
-      height: 100vh;
+      height: 100%;
     }
 
     section {

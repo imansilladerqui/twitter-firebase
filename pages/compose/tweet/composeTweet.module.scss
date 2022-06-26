@@ -1,0 +1,43 @@
+@import "./variables.scss";
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
+  text-align: center;
+  font-size: 16px;
+
+  main {
+    background: $white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (min-width: $breakpoints-mobile) {
+      max-width: $breakpoints-mobile;
+      height: 100vh;
+    }
+
+    .textarea {
+      font-family: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif';
+      border: 0;
+      font-size: 21px;
+      min-height: 200px;
+      padding: 15px;
+      outline: 0;
+      resize: none;
+      width: 100%;
+    }
+
+    .buttonContainer {
+      padding: 15px;
+    }
+  }
+}
