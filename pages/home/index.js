@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./home.module.scss";
 import Devit from "components/Devit";
 import useUser from "hooks/useUser";
-import { fetchLatestDevits } from "../../firebase/client";
+import { listenLatestDevits } from "../../firebase/client";
 import Head from "next/head";
 import Navbar from "components/Navbar";
 
@@ -11,7 +11,11 @@ export default function Home() {
   const user = useUser();
 
   useEffect(() => {
-    user && fetchLatestDevits().then(setTimeline);
+    let unsubscribe;
+    if (user) {
+      unsubscribe = listenLatestDevits(setTimeline);
+    }
+    return () => unsubscribe && unsubscribe();
   }, [user]);
 
   return (
