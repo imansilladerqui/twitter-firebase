@@ -15,32 +15,30 @@ export default function Home() {
   }, [user]);
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Inicio / Devter</title>
       </Head>
-      <main>
-        <header className={styles.header}>
-          <h2>Inicio</h2>
-        </header>
-        <section className={styles.section}>
-          {timeline.map(
-            ({ createdAt, id, img, userName, avatar, content, userId }) => (
-              <Devit
-                avatar={avatar}
-                createdAt={createdAt}
-                id={id}
-                img={img}
-                key={id}
-                content={content}
-                userName={userName}
-                userId={userId}
-              />
-            )
-          )}
-        </section>
-        <Navbar />
-      </main>
-    </div>
+      <header className={styles.header}>
+        <h2>Inicio</h2>
+      </header>
+      <section className={styles.section}>
+        {timeline.map(
+          ({ createdAt, id, img, userName, avatar, content, userId }) => (
+            <Devit
+              avatar={avatar}
+              createdAt={createdAt}
+              id={id}
+              img={img}
+              key={id}
+              content={content}
+              userName={userName}
+              userId={userId}
+            />
+          )
+        )}
+      </section>
+      <Navbar />
+    </>
   );
 }

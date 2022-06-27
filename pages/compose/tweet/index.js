@@ -93,48 +93,43 @@ export default function ComposeTweet() {
   const isButtonDisabled = !message.length || status === COMPOSE_STATES.LOADING;
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Crear un Devit / Devter</title>
       </Head>
-      <main>
-        {user && (
-          <section className={styles.avatarContainer}>
-            <Avatar src={user.avatar} />
-            <p>{user.username}</p>
+      {user && (
+        <section className={styles.avatarContainer}>
+          <Avatar src={user.avatar} />
+          <p>{user.username}</p>
+        </section>
+      )}
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <textarea
+          className={
+            drag === DRAG_IMAGE_STATES.DRAG_OVER
+              ? `${styles.textarea} ${styles.drag}`
+              : `${styles.textarea}`
+          }
+          onChange={handleChange}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          placeholder="¿Qué esta pasando?"
+          value={message}
+        ></textarea>
+        {imgURL && (
+          <section className={styles.removeImg}>
+            <button className={styles.closeImg} onClick={() => setImgURL(null)}>
+              x
+            </button>
+            <img className={styles.preload} src={imgURL} />
           </section>
         )}
-        <form onSubmit={handleSubmit}>
-          <textarea
-            className={
-              drag === DRAG_IMAGE_STATES.DRAG_OVER
-                ? `${styles.textarea} ${styles.drag}`
-                : `${styles.textarea}`
-            }
-            onChange={handleChange}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            placeholder="¿Qué esta pasando?"
-            value={message}
-          ></textarea>
-          {imgURL && (
-            <section className={styles.removeImg}>
-              <button
-                className={styles.closeImg}
-                onClick={() => setImgURL(null)}
-              >
-                x
-              </button>
-              <img className={styles.preload} src={imgURL} />
-            </section>
-          )}
-          <div className={styles.buttonContainer}>
-            <Button disabled={isButtonDisabled}>Devitear</Button>
-          </div>
-        </form>
-        <Navbar />
-      </main>
-    </div>
+        <div className={styles.buttonContainer}>
+          <Button disabled={isButtonDisabled}>Devitear</Button>
+        </div>
+      </form>
+      <Navbar />
+    </>
   );
 }
