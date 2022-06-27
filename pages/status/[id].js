@@ -22,7 +22,7 @@ export default function DevitPage(props) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { id: "7T52gX5Lqki5PUhtJuKq" } }],
+    paths: [{ params: { id: "wJZIETdiaIhzynnh8LNG" } }],
     fallback: true,
   };
 }
@@ -31,7 +31,7 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
 
-  return firestore
+  return await firestore
     .collection("devits")
     .doc(id)
     .get()
