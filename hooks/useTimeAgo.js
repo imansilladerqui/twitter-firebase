@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { formatDate } from "./useDateTimeFormat";
 
-const isRelativeTimeFormatSupported =
+let isRelativeTimeFormatSupported =
   typeof Intl !== "undefined" && Intl.RelativeTimeFormat;
+
+// FIX TIME FORMAT FOR VERCEL DEPLOY
+
+isRelativeTimeFormatSupported = false;
 
 const DATE_UNITS = [
   ["day", 86400],
