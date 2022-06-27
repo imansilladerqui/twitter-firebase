@@ -18,6 +18,7 @@ const getDateDiffs = (timestamp) => {
   for (const [unit, secondsInUnit] of DATE_UNITS) {
     if (Math.abs(elapsed) > secondsInUnit || unit === "second") {
       const value = Math.round(elapsed / secondsInUnit);
+      console.log({ value, unit });
       return { value, unit };
     }
   }
@@ -44,6 +45,11 @@ export default function useTimeAgo(timestamp) {
   const rtf = new Intl.RelativeTimeFormat("es", { style: "long" });
 
   console.log(timeago);
+  console.log(timeago.value);
+
+  // TESTING
+
+  timeago.value = -1;
 
   const { value, unit } = timeago;
 
