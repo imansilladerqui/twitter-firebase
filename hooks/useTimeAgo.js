@@ -16,8 +16,11 @@ const getDateDiffs = (timestamp) => {
   const elapsed = (timestamp - now) / 1000;
 
   for (const [unit, secondsInUnit] of DATE_UNITS) {
+    console.log(elapsed);
+    console.log(secondsInUnit);
     if (Math.abs(elapsed) > secondsInUnit || unit === "second") {
       const value = Math.round(elapsed / secondsInUnit);
+      console.log(value);
       console.log({ value, unit });
       return { value, unit };
     }
