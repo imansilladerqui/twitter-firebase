@@ -1,0 +1,38 @@
+.article {
+  border-bottom: 2px solid #eee;
+  display: flex;
+  padding: 10px 15px;
+
+  &:hover {
+    background: #f5f8fa;
+    cursor: pointer;
+  }
+
+  section {
+    text-align: left;
+
+    a {
+      color: #555;
+      font-size: 14px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .attachImg {
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+  }
+  p {
+    line-height: 1.3125;
+    margin: 0;
+  }
+  .date {
+    color: #555;
+    font-size: 14px;
+  }
+}

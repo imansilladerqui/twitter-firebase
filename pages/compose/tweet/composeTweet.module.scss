@@ -1,0 +1,63 @@
+@import "./variables.scss";
+
+.avatarContainer {
+  padding-top: 20px;
+  padding-left: 10px;
+  display: flex;
+
+  p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.form {
+  padding: 10px;
+  min-height: 100vh;
+
+  .removeImg {
+    position: relative;
+
+    .closeImg {
+      background: rgba(0, 0, 0, 0.3);
+      border: 0;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 24px;
+      width: 32px;
+      height: 32px;
+      top: 15px;
+      position: absolute;
+      right: 15px;
+      cursor: pointer;
+    }
+  }
+
+  .textarea {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    font-size: 21px;
+    min-height: 200px;
+    padding: 15px;
+    outline: 0;
+    resize: none;
+    width: 100%;
+  }
+
+  .drag {
+    border: 3px dashed #09f;
+  }
+
+  .preload {
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+  }
+
+  .buttonContainer {
+    padding: 15px;
+  }
+}
