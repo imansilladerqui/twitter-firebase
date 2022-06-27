@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { formatDate } from "./useDateTimeFormat";
 
-let isRelativeTimeFormatSupported =
+const isRelativeTimeFormatSupported =
   typeof Intl !== "undefined" && Intl.RelativeTimeFormat;
-
-// FIX TIME FORMAT FOR VERCEL DEPLOY
-
-isRelativeTimeFormatSupported = false;
 
 const DATE_UNITS = [
   ["day", 86400],
@@ -46,6 +42,8 @@ export default function useTimeAgo(timestamp) {
   }
 
   const rtf = new Intl.RelativeTimeFormat("es", { style: "long" });
+
+  console.log(timeago);
 
   const { value, unit } = timeago;
 
