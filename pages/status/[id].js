@@ -1,6 +1,6 @@
 import Devit from "components/Devit";
 import Head from "next/head";
-import { firestore } from "firebase-admin";
+import { firestore } from "firebase/admin";
 import { useRouter } from "next/router";
 
 export default function DevitPage(props) {
@@ -31,7 +31,7 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
 
-  return firestore()
+  return firestore
     .collection("devits")
     .doc(id)
     .get()

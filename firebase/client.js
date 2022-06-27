@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
-const config = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG);
+const config = JSON.parse(process.env.FIREBASE_CONFIG);
 
 !firebase.apps.length && firebase.initializeApp(config);
 

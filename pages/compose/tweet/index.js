@@ -39,7 +39,6 @@ export default function ComposeTweet() {
       const onProgress = () => {};
       const onError = () => {};
       const onComplete = () => {
-        console.log("onComplete");
         task.snapshot.ref.getDownloadURL().then(setImgURL);
       };
 
@@ -85,7 +84,6 @@ export default function ComposeTweet() {
     e.preventDefault();
     setDrag(DRAG_IMAGE_STATES.NONE);
     const file = e.dataTransfer.files[0];
-    console.log(file);
     const task = uploadImage(file);
     setTask(task);
   };
