@@ -15,4 +15,8 @@ try {
   });
 } catch (e) {}
 
+const config = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG);
+
+!admin.apps.length && admin.initializeApp(config);
+
 export const firestore = admin.firestore();
