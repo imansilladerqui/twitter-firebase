@@ -30,6 +30,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
+  console.log(params);
 
   try {
     return firestore
@@ -47,7 +48,7 @@ export async function getStaticProps(context) {
           createdAt: +createdAt.toDate(),
         };
         console.log(props);
-        return { props };
+        return { props: props || {}, revalidate: 3600 };
       })
       .catch(() => {
         return { props: {} };
