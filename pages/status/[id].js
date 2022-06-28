@@ -19,22 +19,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  console.log(`Building slug: ${context}`);
   const { params } = context;
   const { id } = params;
 
-  console.log(id);
-
   const querySnapshot = await firestore.collection("devits").doc(id).get();
-
-  console.log(querySnapshot);
-
-  console.log(querySnapshot);
   const data = querySnapshot.data();
-  console.log(data);
   const { createdAt } = data;
-  console.log(createdAt);
-  console.log(+createdAt.toDate());
   const props = {
     ...data,
     id,

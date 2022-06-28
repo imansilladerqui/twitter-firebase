@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
-const config = {
+const firebaseConfig = {
   apiKey: "AIzaSyBOyj8ld1sLhEEk0i2kCZ8Wg5gigip27Qo",
   authDomain: "twitts-69317.firebaseapp.com",
   databaseURL:
@@ -14,7 +14,7 @@ const config = {
   appId: "1:86737244928:web:005f1f0ddb042487bc19e5",
 };
 
-!firebase.apps.length && firebase.initializeApp(config);
+!firebase.apps.length && firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
