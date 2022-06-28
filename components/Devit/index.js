@@ -13,8 +13,8 @@ export default function Devit({
   img,
   id,
 }) {
-  const timeago = useTimeAgo(createdAt || 1656232232381);
-  const createdAtFormated = useDateTimeFormat(createdAt || 1656232232381);
+  const timeago = useTimeAgo(createdAt);
+  const createdAtFormated = useDateTimeFormat(createdAt);
   const router = useRouter();
 
   const handleArticleClick = (e) => {

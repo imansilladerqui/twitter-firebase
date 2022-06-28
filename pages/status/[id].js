@@ -31,24 +31,28 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
 
-  return firestore
-    .collection("devits")
-    .doc(id)
-    .get()
-    .then((doc) => {
-      const data = doc.data();
-      const id = doc.id;
-      const { createdAt } = data;
+  try {
+    return firestore
+      .collection("devits")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        const data = doc.data();
+        const id = doc.id;
+        const { createdAt } = data;
 
-      const props = {
-        ...data,
-        id,
-        createdAt: +createdAt.toDate(),
-      };
-      console.log(props);
-      return { props };
-    })
-    .catch(() => {
-      return { props: {} };
-    });
+        const props = {
+          ...data,
+          id,
+          createdAt: +createdAt.toDate(),
+        };
+        console.log(props);
+        return { props };
+      })
+      .catch(() => {
+        return { props: {} };
+      });
+  } catch (error) {
+    console.log("Error getting documents: ", error);
+  }
 }
