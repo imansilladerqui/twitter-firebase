@@ -3,16 +3,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
-const config = {
-  apiKey: "AIzaSyBOyj8ld1sLhEEk0i2kCZ8Wg5gigip27Qo",
-  authDomain: "twitts-69317.firebaseapp.com",
-  databaseURL:
-    "https://twitts-69317-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "twitts-69317",
-  storageBucket: "twitts-69317.appspot.com",
-  messagingSenderId: "86737244928",
-  appId: "1:86737244928:web:005f1f0ddb042487bc19e5",
-};
+const config = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG);
 
 !firebase.apps.length && firebase.initializeApp(config);
 

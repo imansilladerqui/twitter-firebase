@@ -29,8 +29,12 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
 # vercel
 .vercel
 
 #eslint cache
 .eslintcache
+
+# firebase keys
+firebase/firebase-keys.json
