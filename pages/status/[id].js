@@ -1,4 +1,5 @@
 import Devit from "components/Devit";
+
 import { useRouter } from "next/router";
 
 export default function DevitPage(props) {
@@ -13,7 +14,7 @@ export async function getServerSideProps(context) {
   const { params, res } = context;
   const { id } = params;
 
-  const apiResponse = await fetch(`/api/devits/${id}`);
+  const apiResponse = await fetch(`${process.env.API_URL}/api/devits/${id}`);
   if (apiResponse.ok) {
     const props = await apiResponse.json();
     return { props };
