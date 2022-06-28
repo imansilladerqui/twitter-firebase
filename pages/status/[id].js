@@ -25,27 +25,20 @@ export async function getStaticProps(context) {
 
   console.log(id);
 
-  return firestore
-    .collection("devits")
-    .doc(id)
-    .get()
-    .then((doc) => {
-      console.log(doc);
-      const data = doc.data();
-      console.log(data);
-      const id = doc.id;
-      console.log(id);
-      const { createdAt } = data;
-      console.log(createdAt);
-      console.log(+createdAt.toDate());
-      const props = {
-        ...data,
-        id,
-        createdAt: +createdAt.toDate(),
-      };
-      return { props };
-    })
-    .catch(() => {
-      return { props: {} };
-    });
+  const querySnapshot = await firestore.collection("devits").doc(id).get();
+
+  console.log(querySnapshot);
+
+  console.log(querySnapshot);
+  const data = querySnapshot.data();
+  console.log(data);
+  const { createdAt } = data;
+  console.log(createdAt);
+  console.log(+createdAt.toDate());
+  const props = {
+    ...data,
+    id,
+    createdAt: +createdAt.toDate(),
+  };
+  return { props };
 }
