@@ -34,6 +34,3 @@ yarn-error.log*
 
 #eslint cache
 .eslintcache
-
-# firebase keys
-firebase/firebase-keys.json
